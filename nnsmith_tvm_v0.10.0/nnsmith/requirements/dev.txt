@@ -1,0 +1,9 @@
+pytest
+pre-commit
+black
+wget
+gputil
+pygraphviz
+marko
+rich
+tomark
