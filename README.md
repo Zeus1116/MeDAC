@@ -16,3 +16,42 @@ Each project directory includes the following main items:
 
 The complete experimental data and implementation code for each testing scenario enable straightforward reproduction of all speedup effects reported in our paper.
 
+## Quick Navigation
+
+- Reproduction manual: `REPRODUCTION_GUIDE.md`
+- Parameter reference: `PARAMETER_REFERENCE.md`
+- Hardware and base environment: `Hardware.md`
+- Python dependencies: `requirements.txt`
+
+## Repository Layout
+
+This repository contains four scenario folders (two ORT versions and two TVM versions):
+
+- `nnsmith_ort_v1.16.0/nnsmith`
+- `nnsmith_ort_v1.17.0/nnsmith`
+- `nnsmith_tvm_v0.10.0/nnsmith`
+- `nnsmith_tvm_v0.11.1/nnsmith`
+
+Each scenario folder includes:
+
+- data generation scripts (`generate_model.sh`)
+- execution scripts (`exec_model.sh`)
+- data processing scripts (`error.py`, `error_classify.py`, `merge_info*.py`)
+- model notebooks (`MPNN_edge_message_TCP.ipynb`, `LET.ipynb`, `gcn_new.ipynb`)
+- checkpoints and precomputed artifacts (`*.pth`, `*.pkl`)
+
+## Reproduction Modes
+
+- Fast reproduction: directly run notebook evaluation with existing artifacts/checkpoints.
+- Full rebuild: regenerate models, execute tests, process datasets, train/evaluate models, and compute speedup.
+
+For complete command-level details, use `REPRODUCTION_GUIDE.md`.
+
+## Methods and Evaluation
+
+- Main method: MeDAC (MPNN with attention-based message passing)
+- Baselines: LET and GCN
+- Core metric: bug-finding efficiency (time-to-detect-bugs and speedup over random order)
+
+Detailed hyperparameters and sampling settings are documented in `PARAMETER_REFERENCE.md`.
+
