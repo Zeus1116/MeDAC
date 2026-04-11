@@ -123,7 +123,7 @@ This section summarizes key experimental parameters used across scripts and note
 
 ### 0. Hyperparameter Figure
 
-![Paper Hyperparameter Table](docs/hyperparameters.png)
+![Paper Hyperparameter Table](docs/paper_hyperparameters.png)
 
 #### 0.1 Parameter Explanations (From the Figure)
 
