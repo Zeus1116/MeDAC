@@ -6,15 +6,33 @@ This repository provides the tool (i.e., MeDAC) and all experimental data for ou
 Message Passing Neural Network with Attention", which has been submitted to IEEE Transactions on Reliability. 
 
 ### File Structure
-The code repository's root directory contains four subfolders, each corresponding to one of the four test scenarios mentioned in the paper.
-Each project directory includes the following main items:
-* **NNSmith**: The NNSmith folder contains the original NNSmith code, along with our implementation for logging three types of features of the generated deep learning models, as well as the generation time of each model.
-* **MPNN_edge_message_TCP.ipynb**: The file MPNN_edge_message_TCP.ipynb contains the core implementation of the MeDAC approach. This Jupyter notebook provides a detailed demonstration of:(1) How we construct and train a message-passing neural network (MPNN) with an attention mechanism, along with the iterative process of updating the intermediate representations of the deep learning model by refining node and edge features. (2) How to load our preprocessed deep learning model data to accelerate the testing process of DL compilers, along with a performance evaluation of the achieved speedup.
-* **LET.ipynb**: The LET.ipynb file demonstrates how we construct a deep learning model based on the LET concept to accelerate the testing process of deep learning compilers, along with the resulting speedup performance.
-* **GCN.ipynb**: Similarly, the GCN.ipynb file demonstrates how we construct a deep learning model based on the GCN to accelerate the testing process of deep learning compilers, along with the resulting speedup performance.
-* **Other files**: Additionally, each subfolder contains numerous auxiliary files, which include both the training datasets and the implementation details of how we utilized the NNSmith tool to generate each individual model, record model generation times, and extract internal structural features of the models.
+This repository is organized by experimental scenario. Each scenario is an independent pipeline that includes model generation, execution, dataset construction, and prioritization evaluation.
 
-The complete experimental data and implementation code for each testing scenario enable straightforward reproduction of all speedup effects reported in our paper.
+```text
+MeDAC-main/
+├─ README.md
+├─ Hardware.md
+├─ requirements.txt
+├─ PARAMETER_REFERENCE.md
+├─ docs/images/
+├─ nnsmith_ort_v1.16.0/nnsmith/
+├─ nnsmith_ort_v1.17.0/nnsmith/
+├─ nnsmith_tvm_v0.10.0/nnsmith/
+└─ nnsmith_tvm_v0.11.1/nnsmith/
+```
+
+Each scenario folder follows the same role-based layout:
+
+- `generate_model.sh`, `exec_model.sh`: random test-model generation and backend execution.
+- `error.py`, `error_classify.py`, `error_classify_op.py`: bug-case extraction and error-type filtering.
+- `merge_info_train.py`, `merge_info.py`, `merge_info_only.py`: training/test JSON construction with graph/time metadata.
+- `MPNN_edge_message_TCP.ipynb`: MeDAC (MPNN + attention) training and ranking-based speedup evaluation.
+- `LET.ipynb`, `gcn_new.ipynb`: LET and GCN baselines for comparison.
+- `*.pth`: saved model checkpoints.
+- `*-testdata_*`, `*.pkl`: prepared evaluation sets and speedup/statistical artifacts.
+- `nnsmith/`, `experiments/`, `tests/`: integrated upstream NNSmith codebase and utilities.
+
+This structure allows all four scenarios to be reproduced with the same workflow while preserving backend/version-specific settings.
 
 ## Quick Navigation
 
