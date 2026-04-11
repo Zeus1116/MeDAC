@@ -2,6 +2,41 @@
 
 This file summarizes key experimental parameters used across scripts and notebooks.
 
+## 0. Paper Hyperparameter Figure
+
+Add your provided figure file at:
+
+- `docs/images/paper_hyperparameters.png`
+
+Then this reference image will render in Markdown:
+
+![Paper Hyperparameter Table](docs/paper_hyperparameters.png)
+
+### 0.1 Parameter Explanations (From the Figure)
+
+The following explains each item in the figure and its role in experiment reproduction.
+
+- `Optimizer = Adam`: First-order optimizer used for end-to-end training. It is robust for sparse/noisy gradients in graph models.
+- `Loss Function = Binary Cross-Entropy`: Supervises bug-revealing probability for binary classification (`bug` vs `non-bug`).
+- `Learning-Rate Schedule = NoamLR`: Two-stage schedule. Warmup phase increases LR linearly; decay phase decreases LR exponentially.
+- `eta_init = 1e-4`: Initial LR at the start of training; keeps updates stable before warmup ramps up.
+- `eta_max = 1e-3`: Peak LR reached after warmup; controls maximal exploration capacity.
+- `eta_final = 1e-4`: Final LR near training end; helps convergence stability.
+- `Warmup Epochs = 2`: Number of epochs used for linear LR warmup.
+- `Total Epochs = 100`: Maximum training epochs.
+- `Batch Size = 16`: Mini-batch size used in optimization.
+- `Hidden Size = 400`: Message-passing hidden feature dimension; larger values increase representation capacity and compute cost.
+- `Message-Passing Depth = 3`: Number of propagation rounds on graph structure.
+- `Dropout = 0.3`: Regularization ratio to reduce overfitting.
+- `Validation Criterion = Minimum validation loss`: Selects best checkpoint by the lowest validation loss.
+- `Classification Threshold tau = 0.3`: Threshold for reporting classification metrics. This threshold is for metric calculation, not for ranking-based speedup logic.
+
+### 0.2 Reproduction Note
+
+- The figure above is the paper-style parameter configuration.
+- Some scenario notebooks in this repository may show local defaults that differ from the paper configuration (for example hidden size or metric threshold).
+- For strict paper-level reproduction, prioritize the figure configuration in this section.
+
 ## 1. Data Generation Parameters
 
 Source scripts:
