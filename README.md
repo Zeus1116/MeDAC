@@ -121,15 +121,9 @@ For full pipeline reproduction (model generation, execution, all baselines, and 
 
 This section summarizes key experimental parameters used across scripts and notebooks.
 
-### 0. Paper Hyperparameter Figure
+### 0. Hyperparameter Figure
 
-Place the figure file at:
-
-- `docs/paper_hyperparameters.png`
-
-Then it will render below:
-
-![Paper Hyperparameter Table](docs/paper_hyperparameters.png)
+![Paper Hyperparameter Table](docs/hyperparameters.png)
 
 #### 0.1 Parameter Explanations (From the Figure)
 
