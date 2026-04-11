@@ -111,12 +111,6 @@ Run the notebook cells in order:
 
 For full pipeline reproduction (model generation, execution, all baselines, and cross-scenario aggregation), see `REPRODUCTION_GUIDE.md`.
 
-## Methods and Evaluation
-
-- Main method: MeDAC (MPNN with attention-based message passing)
-- Baselines: LET and GCN
-- Core metric: bug-finding efficiency (time-to-detect-bugs and speedup over random order)
-
 ## Parameter Reference
 
 This section summarizes key experimental parameters used across scripts and notebooks.
